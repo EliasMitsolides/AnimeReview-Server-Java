@@ -18,8 +18,18 @@
 <!--6) NodeJS are usually at 3000, Angular are usually at 4200, Flask 8000-->
 <!--7) During the WebDev class we used mvn clean install to make the .jar exec...
       mvn different so we use Gradle via Spring Boot-->
-
 <!--8) Note about git: The .git folder indicates the project is a git repo
       so we can keep track of the other things-->
-<!--9)Other git note, I been doing git ops over HTTPS so I need to refresh
+<!--9) Other git note, I been doing git ops over HTTPS so I need to refresh
         personal access tokens on Github-->
+<!--10) So hey, how does index.html become the go to launch page? Weeelll...
+        ...Springboot references index.html by title and location in its
+        launch explicitly, it's convention!-->
+<!--11) What 10 means is that if I change the name n' location of index.html in
+        Spring's launch code and index.html itself it'll run just the same-->
+<!--12) And of course it also checks for index.html and and other html in the...
+        ...'webapp' folder. Could change that name also in the back for the...
+        ...same effect. So webapp is the website proper and index.html is the...
+        ... 'website.com/' as in the default page under no other reference-->
+<!--13) Just as the world revolves around the sun, different pages revolve around
+        index.html, and it's location-->
