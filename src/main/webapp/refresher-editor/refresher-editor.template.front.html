@@ -1,15 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!--11) head lives the more 'self' stuff, when the doc was created, who made it,
-        file dependency, and title that's default in head of html boilerplates-->
-    <meta charset="UTF-8">
-    <title>Refresher Title</title>
-</head>
-<body>
-    <!--10) The Prof.'s use of 'template' in file names is because often html's are
-        reused to create larger and larger html files, front as its front facing,
-        html because this is already html (lol)
-    -->
-</body>
+    <head>
+        <!--11) head lives the more 'self' stuff, when the doc was created, who made it,
+            file dependency, and title that's default in head of html boilerplates-->
+        <!--12) An http/s address can copy the parts between /s in urls and ask...
+            "do we have folder 'refresher-editor' anywhere in webapp?" and next
+            "do we have file 'refresher-editor.template.front.html' in 'refresher-editor'"
+            so if that file exists & has a supporting html tag, it'll show ez pz-->
+        <meta charset="UTF-8">
+        <title>Refresher Title</title>
+        <!--Link that handy .css here via a link element-->
+        <link href="refresher-editor.style.front.css"
+              rel="stylesheet"/>
+        <!--20) Using the 'style' element is better practice than 'style' att., it goes...
+        in the 'head' element as it's dictating stuff across the whole file-->
+        <!--21) The html element used in CSS is called a 'selector' (h1, h2) -->
+        <!--22) In the curly brackets are definitions, left-hand is property...
+        right-hand is value of chosen property, so many properties, we'll only...
+        memorize oh so many-->
+        <!--23) Having 'style' elements, which are CSS, in HTML files is still...
+        bad practice, best to have your own css page-->
+<!--        <style>-->
+<!--            h1 {-->
+<!--                color: white;-->
+<!--                background-color: red;-->
+<!--            }-->
+<!--            h2 {-->
+<!--                color: yellow;-->
+<!--                background-color: blue;-->
+<!--            }-->
+<!--        </style>-->
+    </head>
+    <body>
+        <!--10) The Prof.'s use of 'template' in file names is because often html's are
+            reused to create larger and larger html files, front as its front facing,
+            html because this is already html (lol)
+        -->
+        <!--18) All attributes have 'name="value"', value string usually, value is...
+        CSS, it's own  language-->
+<!--    <h1 style="color: white; background-color: blue">
+            Big Bucket
+        </h1>-->
+        <!--19) Using style att. can have problems, makes the element have to be changed...
+        on the spot, it's preferred to have a centralized spot to dictate changed-->
+        <h1 style="">
+            Big Bucket
+        </h1>
+        <!--14) <h> tags are conventionally for showing hierarchy, <div> tags are...
+            often to just group up sections of code, they're block elements like <h>...
+            if you want another tag in a block element and keep it's attribute...
+            use <span> which is inline to use the parent block element's attributes-->
+<!--        <h2>Medium Bucket-->
+<!--        <span>wowowoww</span>-->
+<!--        </h2>-->
+<!--        <h2>Small Things</h2>-->
+
+        <h2>Medium Bucket</h2>
+        <ul>
+        <!--15) <ul> are unordered (bullet points), <ol> are ordered (ex. numbered)-->
+            <li>Medium Bucket 1</li>
+            <li>Medium Bucket 2</li>
+            <li>Medium Bucket 3</li>
+        </ul>
+
+        <h2>Small Bucket</h2>
+        <ul>
+            <li>Small Bucket 1</li>
+            <li>Small Bucket 2</li>
+            <li>Small Bucket 3</li>
+        </ul>
+
+        <h3>Thingies</h3>
+        <ol>
+            <li>Thingy 1</li>
+            <li>Thingy 2</li>
+            <li>Thingy 3</li>
+        </ol>
+        <!--16) Layout of content simple, problems will be in making it dynamic and...
+        pretty-->
+        <!--17) Understand HTML's role to give structure to document, stylesheets and...
+        CSS will inform the font, layout style, horizontal/vertical to render the stuff-->
+    </body>
 </html>
