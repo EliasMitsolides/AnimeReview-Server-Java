@@ -6,3 +6,17 @@ h2 {
     color: yellow;
     background-color: blue;
 }
+#AniRe-module-list {
+    background-color: cyan;
+}
+.AniRe-module {
+    background-color: lightgray;
+}
+.AniRe-bold {
+    font-weight: bold;
+}
+.AniRe-module.AniRe-selected {
+    background-color: darkgray;
+}
+
+/*25) The part left of the curly braces are the selectors, h1, h2, id*/
