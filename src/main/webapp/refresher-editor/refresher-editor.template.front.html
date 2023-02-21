@@ -20,7 +20,8 @@
         <!--Link that handy .css here via a link element-->
         <!--25) href="refresher-editor.style.front.css?refreshcss=1" if Chrome cache goofs-->
         <link href="refresher-editor.style.front.css"
-              rel="stylesheet"/>
+              rel="stylesheet"
+        />
         <!--20) Using the 'style' element is better practice than 'style' att., it goes...
         in the 'head' element as it's dictating stuff across the whole file-->
         <!--21) The html element used in CSS is called a 'selector' (h1, h2) -->
@@ -43,13 +44,10 @@
     </head>
     <body>
         <!--29) divs are love, divs are life, divs group content into one thing
-                divs are really important to Bootstrap, esp its grid system-->
+                divs are really important to Bootstrap, esp its grid system
+                where the grid system splits the page into 12 parts/rows-->
         <div class="container-fluid">
 
-            <div class="row">
-                <div class="col"> Left Side</div>
-                <div class="col"> Right Side</div>
-            </div>
         <!--10) The Prof.'s use of 'template' in file names is because often html's are
             reused to create larger and larger html files, front as its front facing,
             html because this is already html (lol)
@@ -64,41 +62,79 @@
         <h1 style="">
             Big Bucket
         </h1>
-        <!--14) <h> tags are conventionally for showing hierarchy, <div> tags are...
-            often to just group up sections of code, they're block elements like <h>...
-            if you want another tag in a block element and keep its attribute...
-            use <span> which is inline to use the parent block element's attributes-->
-<!--        <h2>Medium Bucket-->
-<!--        <span>wowowoww</span>-->
-<!--        </h2>-->
-<!--        <h2>Small Things</h2>-->
 
-        <!--26) Classes and ids are nice to use in styling and JS-->
-        <h2 id="AniRe-module-list">Medium Bucket</h2>
-        <ul>
-        <!--15) <ul> are unordered (bullet points), <ol> are ordered (ex. numbered)-->
-            <li class="AniRe-module AniRe-bold">Medium Bucket 1</li>
-            <li class="AniRe-module AniRe-selected">Medium Bucket 2</li>
-            <li class="AniRe-module">Medium Bucket 3</li>
-        </ul>
+        <!--30) These row and col classes are bootstrap-->
+        <div class="row"> <!--row begins-->
+            <div class="col-3"> <!--first col begins-->
+                <!--14) <h> tags are conventionally for showing hierarchy, <div> tags are...
+                    often to just group up sections of code, they're block elements like <h>...
+                    if you want another tag in a block element and keep its attribute...
+                    use <span> which is inline to use the parent block element's attributes-->
+                <!--        <h2>Medium Bucket-->
+                <!--        <span>wowowoww</span>-->
+                <!--        </h2>-->
+                <!--        <h2>Small Things</h2>-->
 
-        <h2>Small Bucket</h2>
-        <ul>
-            <li>Small Bucket 1</li>
-            <li>Small Bucket 2</li>
-            <li>Small Bucket 3</li>
-        </ul>
+                <!--26) Classes and ids are nice to use in styling and JS-->
+                <h2 id="AniRe-module-list">Medium Bucket</h2> <!--id="AniRe-module-list"-->
+                <ul class="list-group">
+                    <!--15) <ul> are unordered (bullet points), <ol> are ordered (ex. numbered)-->
+                    <li class="list-group-item">Medium Bucket 1</li> <!--class="AniRe-module AniRe-bold"-->
+                    <li class="list-group-item active">Medium Bucket 2</li> <!--class="AniRe-module AniRe-selected"-->
+                    <li class="list-group-item">Medium Bucket 3</li>
+                </ul>
 
-        <h3>Thingies</h3>
-        <ol>
-            <li>Thingy 1</li>
-            <li>Thingy 2</li>
-            <li>Thingy 3</li>
-        </ol>
-        <!--16) Layout of content simple, problems will be in making it dynamic and...
-        pretty-->
-        <!--17) Understand HTML's role to give structure to document, stylesheets and...
-        CSS will inform the font, layout style, horizontal/vertical to render the stuff-->
+
+            </div><!--first col ends-->
+
+            <div class="col-9"> <!--second col begins-->
+                <h2>Small Bucket</h2>
+                <ul class="nav nav-tabs">
+                    <li class="nav-items">
+                        <a class="nav-link active" href="#">
+                            Small Bucket 1
+                        </a>
+                    </li>
+                    <li class="nav-items">
+                        <a class="nav-link" href="#">
+                            Small Bucket 2
+                        </a>
+                    </li>
+                    <li class="nav-items">
+                        <a class="nav-link" href="#">
+                            Small Bucket 3
+                        </a>
+                    </li>
+                </ul>
+
+                <h3>Thingies</h3>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Thingy 1
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            Thingy 2
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Thingy 3
+                        </a>
+                    </li>
+                </ul>
+                <!--16) Layout of content simple, problems will be in making it dynamic and...
+                pretty-->
+                <!--17) Understand HTML's role to give structure to document, stylesheets and...
+                CSS will inform the font, layout style, horizontal/vertical to render the stuff-->
+            </div> <!--second col ends-->
+        </div> <!--row ends-->
+
+
+
+
         </div>
     </body>
 </html>
