@@ -20,3 +20,11 @@ h2 {
 }
 
 /*25) The part left of the curly braces are the selectors, h1, h2, id*/
+/*36) Both padding and margin are transparent and will adapt color of what they're contained in, if
+       they're in a container who's background is yellow, margin will be yellow, padding will
+       be content's background*/
+/*37) The inline and block algo will decide where content will be put. Block takes width of parent
+        and everything else will be pushed down. Inline goes left to right, wraps when no right space*/
+/*38) Block width is width of parent. Height of content. Can be overwritten. */
+/*39> Border as an attribute can take 3 attribute values, style, width and color decisions...properties
+        in CSS usually have abbreviated version. Usually split them up, people do*/
