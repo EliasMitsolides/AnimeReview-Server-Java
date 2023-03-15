@@ -26,5 +26,5 @@ h2 {
 /*37) The inline and block algo will decide where content will be put. Block takes width of parent
         and everything else will be pushed down. Inline goes left to right, wraps when no right space*/
 /*38) Block width is width of parent. Height of content. Can be overwritten. */
-/*39> Border as an attribute can take 3 attribute values, style, width and color decisions...properties
+/*39) Border as an attribute can take 3 attribute values, style, width and color decisions...properties
         in CSS usually have abbreviated version. Usually split them up, people do*/
