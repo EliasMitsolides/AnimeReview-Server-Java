@@ -2,9 +2,12 @@
 //      Want all declared variables is not accessible from out here. JS has '()' be an operator.
 //      The IIFE, parenthesis, function () {}() makes a self-contained module that doesn't compete w/ rest of namespace
 (function () {
+    let userService = new AdminUserServiceClient()
     let username = "Asuka" //little string
     let cringePoints = 42069 //little numbers
     let baseUser = true //little booleans
+    let $usernameFld
+    let $createWeebBtn
     const ADMIN = "ADMIN"
     //44) Best practice for variable names in JS is to double quote the variables, although it's parsable without
     //45) This Asuka variable is being assigned to a little object, as opposed to a object instantiated
@@ -57,8 +60,17 @@
     $weebUserList.append($howl) // complex appends are possible, is what this string of appends shows
 
     const deleteWeebUser = (index) => {
-        weebUsers.splice(index, 1) //index will always be relevant as recalling renderWeebUsers below finds new indexes
-        renderWeebUsers()
+        let user = weebUsers[index]
+        let id = user.id
+        console.log(id)
+
+        userService.deleteUser(id)
+            .then(response => {
+                //splice local array
+                weebUsers.splice(index, 1)
+                renderWeebUsers()
+            })
+
     }
 
     function renderWeebUsers(){ // arrow syntax goes...const renderWeebUsers = () => {
@@ -79,6 +91,8 @@
                     //in this create we only gave it a reference to the function
             let $deleteBtn = $("<button>Delete Weeb</button>")
             //when body of arrow function is 1 line, the curly brackets are optional
+            //the below deleteWeebUser(u) doesn't occur right way is because the => is a prefix, wont enact left->right
+            let f = () => deleteWeebUser(u)
             $deleteBtn.click( () => deleteWeebUser(u))
             $newWeeb.append($deleteBtn)
             $weebUserList.append($newWeeb)
@@ -86,7 +100,7 @@
     }
     renderWeebUsers()
 
-    let $createWeebBtn = $("#createWeebUser")
+    $createWeebBtn = $("#createWeebUser")
     ////click() can simulate a regular click or with an argument act as a callback
     ////we can do this chunk or declare a function if we want to reuse the functionality
     //$createWeebBtn.click(function () { // () => {
@@ -102,17 +116,30 @@
         const newWeeb = {
             username: username
         }
-        weebUsers.push(newWeeb)
-        renderWeebUsers()
+        userService.createUser(newWeeb)
+            .then(successfulNewWeeb => {
+                weebUsers.push(successfulNewWeeb)
+                renderWeebUsers()
+            })
+
+
     }
 
     //55) Do not put parenthesis on createWeebUser as that would invoke it rn, we will instead reference it
     //      for later reference...fun fact in Angular you do need parenthesis for function callbacks
     $createWeebBtn.click(createWeebUser)
 
-    let $usernameFld = $("#usernameFld")
+    $usernameFld = $("#usernameFld")
     $usernameFld.attr("placeholder","username")
 
+    const findAllUsers = () => {
+        userService.findAllUsers()
+            .then(usersFromServer => {
+                weebUsers = usersFromServer
+                renderWeebUsers()
+            })
+    }
+    findAllUsers()
     //48) 'var' is the oldest way to declare. Those variables can be globally and locally scoped & re-declared
            //'let' is preferred for variable declaration as it's block scoped, can't access it outside its
            // squiggly lines, can be updated but NOT re-declared, but there can be same let vars in diff scopes
