@@ -8,6 +8,7 @@
     let baseUser = true //little booleans
     let $usernameFld
     let $createWeebBtn
+    let $updateWeebBtn
     const ADMIN = "ADMIN"
     //44) Best practice for variable names in JS is to double quote the variables, although it's parsable without
     //45) This Asuka variable is being assigned to a little object, as opposed to a object instantiated
@@ -28,14 +29,11 @@
     weebUsers.push(
         {username: "Faust"}
     )
-    for(let u=0; u<weebUsers.length; u++){
-        // console.log(users[u]) // for printing the variables in users
-        console.log(u)
-    }
+
     //47) In Java/higher level languages, 'u' would be an instance of weebUsers, in JS 'u' is just an index
-    for (let u in weebUsers){
-        console.log(u) // nothing special here, this is shorter syntax for the above loop
-    }
+    //for (let u in weebUsers){
+    //    console.log(u) // nothing special here, this is shorter syntax for the above loop
+    //}
     //51) This global constant variable through jQuery is p. powerful, can do a lot with what it retrieves
             //it's bound to the DOM so it can be changed and will reflect on the screen
     //52) '$' in front of DOM-tied variables to show it's a jQuery object...not necessary but good
@@ -62,7 +60,6 @@
     const deleteWeebUser = (index) => {
         let user = weebUsers[index]
         let id = user.id
-        console.log(id)
 
         userService.deleteUser(id)
             .then(response => {
@@ -71,6 +68,21 @@
                 renderWeebUsers()
             })
 
+    }
+
+    let currentUserIndex = -1
+    //This function fills username input field with name of weeb whose "Edit Weeb" was pressed
+    const editWeebUser = index => { //parenthesis optional w/ 1 parameter
+        const user = weebUsers[index];
+        const id = user.id;
+        console.log(id);
+        currentUserIndex = index;
+
+        userService.findUserById(id)
+            .then(user => {
+                console.log(user)
+                $usernameFld.val(user.username)
+            })
     }
 
     function renderWeebUsers(){ // arrow syntax goes...const renderWeebUsers = () => {
@@ -92,21 +104,25 @@
             let $deleteBtn = $("<button>Delete Weeb</button>")
             //when body of arrow function is 1 line, the curly brackets are optional
             //the below deleteWeebUser(u) doesn't occur right way is because the => is a prefix, wont enact left->right
-            let f = () => deleteWeebUser(u)
-            $deleteBtn.click( () => deleteWeebUser(u))
+            //let f = () => deleteWeebUser(u)
+            $deleteBtn.click( () => deleteWeebUser(u) )
             $newWeeb.append($deleteBtn)
+
+            let $editBtn = $("<button>Edit Weeb</button>")
+            $editBtn.click( () => editWeebUser(u) )
+            $newWeeb.append($editBtn)
+
             $weebUserList.append($newWeeb)
         }
     }
     renderWeebUsers()
 
-    $createWeebBtn = $("#createWeebUser")
+    $createWeebBtn = $("#createWeebUserBtn")
+    $updateWeebBtn = $("#updateWeebUserBtn")
     ////click() can simulate a regular click or with an argument act as a callback
     ////we can do this chunk or declare a function if we want to reuse the functionality
     //$createWeebBtn.click(function () { // () => {
-    //    const newWeeb = {
-    //        username: "New Weeb"
-    //    }
+    //    const newWeeb = { username: "New Weeb" }
     //    weebUsers.push(newWeeb)
     //    renderWeebUsers()
     //})
@@ -114,20 +130,33 @@
         const username = $usernameFld.val() //saves val at that moment, is not a pointer so we can reset placeholder now
         $usernameFld.val("") //val with parameters behaves as a write operation, javascript way of setters and getters
         const newWeeb = {
-            username: username
+            username: username,
+            "cringePoints": 0,
+            baseUser: baseUser,
+            role: USER
         }
         userService.createUser(newWeeb)
             .then(successfulNewWeeb => {
                 weebUsers.push(successfulNewWeeb)
                 renderWeebUsers()
             })
+    }
 
+    const updateWeebUser = () => {
+        let weeb = weebUsers[currentUserIndex]
 
+        weeb.username = $usernameFld.val()
+        $usernameFld.val("")
+        userService.updateUser(weeb.id, weeb)
+            .then(editedWeeb => {
+                findAllUsers() //ideally, splice out old user and splice in new user, refresh for laziness
+            })
     }
 
     //55) Do not put parenthesis on createWeebUser as that would invoke it rn, we will instead reference it
     //      for later reference...fun fact in Angular you do need parenthesis for function callbacks
     $createWeebBtn.click(createWeebUser)
+    $updateWeebBtn.click(updateWeebUser)
 
     $usernameFld = $("#usernameFld")
     $usernameFld.attr("placeholder","username")

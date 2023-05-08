@@ -16,7 +16,7 @@ function AdminUserServiceClient(){
     var self = this;
     function createUser(user) {
         return fetch(self.url, {
-            method: 'POST',
+            method: 'POST', //default is 'GET' so override with 'POST'
             body: JSON.stringify(user), //contains body, user refers to JSON object that must be a string inside body
             headers:{
                 "content-type": "application/json"
@@ -38,8 +38,19 @@ function AdminUserServiceClient(){
           return response.json()                        //    .then(response => response.json())
       })                                                // /\/\implied return/\/\ in ES6,
     }
-    function findUserById(userId) {}
-    function updateUser(userId, user) {}
+    function findUserById(userId) {
+        return fetch(`${self.url}/${userId}`)
+            .then(response => response.json())
+    }
+    function updateUser(userId, user) {
+        return fetch(`${self.url}/${userId}`, {
+            method: 'PUT',
+            body: JSON.stringify(user),
+            headers:{
+                "content-type": "application/json"
+            }
+        }).then(response => response.json())
+    }
     //63) Backtick `` allows cleaner string interpolation, use ${} in JS to concatenate without +'s and hella ""s
     function deleteUser(userId) {
         return fetch(`${self.url}/${userId}`, {
