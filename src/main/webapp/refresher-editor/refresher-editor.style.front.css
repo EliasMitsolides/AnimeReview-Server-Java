@@ -19,6 +19,41 @@ h2 {
     background-color: darkgray;
 }
 
+.AniRe-Module-X {
+    display:inline-block;
+    vertical-align: middle; 
+    
+    
+}
+
+.AniRe-Module-Item {
+    display:flex;
+    align-items: center;
+}
+
+.AniRe-Plus {
+    display:inline-block;
+    vertical-align: middle;
+    margin-left: auto;
+}
+
+.AniRe-MedBucket{
+    display: flex;
+    
+}
+
+.AniRe-EmptyBucket{
+    height: 41.2px;
+}
+
+.AniRe-WidgetBox{
+    clear: both;
+    margin-top: 20px;
+    border: solid gray;
+    
+    /* overflow: hidden; */
+}
+
 /*25) The part left of the curly braces are the selectors, h1, h2, id*/
 /*36) Both padding and margin are transparent and will adapt color of what they're contained in, if
        they're in a container who's background is yellow, margin will be yellow, padding will
